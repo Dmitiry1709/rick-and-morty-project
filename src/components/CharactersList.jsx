@@ -1,15 +1,17 @@
 import React from "react"
-import {useCharacters} from "../contexts/Characters";
-import {Col, Row, Card} from "antd";
+import {useCharacters} from "../contexts/Characters"
+import {Col, Row, Card, Typography} from "antd"
+import {NO_CHARACTERS} from "../consts/Messages"
 
 const { Meta } = Card
+const {Title} = Typography
 
 function CharactersList() {
     const characters = useCharacters().characters.data
 
     if (characters.results) {
         return (
-            <Row justify={'center'} wrap gutter={[16, 16]}>
+            <Row justify={'center'} gutter={[16, 16]}>
                 {characters.results.map(i =>
                     <Col key={i.id}>
                         <Card
@@ -26,8 +28,7 @@ function CharactersList() {
     }
 
     return (
-        <>
-        </>
+        <Title className="characters-null-title" level={3}>{NO_CHARACTERS}</Title>
     )
 }
 

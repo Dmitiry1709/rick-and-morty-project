@@ -37,7 +37,7 @@ function Filter() {
     }
 
     return (
-        <Row className='filter' justify={'center'} wrap gutter={[16, 16]}>
+        <Row className='filter' justify={'center'} gutter={[16, 16]}>
             {CHARACTERS_INPUTS.map((i, index) =>
                 <Col key={index}>
                     <Input
