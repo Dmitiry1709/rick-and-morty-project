@@ -1,0 +1,5 @@
+@import "~antd/dist/antd.css";
+
+.ant-spin-nested-loading > div > .ant-spin .ant-spin-dot {
+    position: fixed;
+}

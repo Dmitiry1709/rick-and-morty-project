@@ -1,0 +1,8 @@
+.characters{
+    max-width: 1300px;
+    margin: 0 auto !important;
+    min-height: calc(100vh - 64px);
+}
+.characters-card-meta{
+    text-align: center;
+}
