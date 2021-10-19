@@ -1,9 +1,9 @@
 import React from "react"
 import {useCharacters} from "../contexts/Characters"
-import {Col, Row, Card, Typography} from "antd"
+import {Col, Row, Typography} from "antd"
 import {NO_CHARACTERS} from "../consts/Messages"
+import Character from "./Character";
 
-const { Meta } = Card
 const {Title} = Typography
 
 function CharactersList() {
@@ -14,13 +14,7 @@ function CharactersList() {
             <Row justify={'center'} gutter={[16, 16]}>
                 {characters.results.map(i =>
                     <Col key={i.id}>
-                        <Card
-                            hoverable
-                            style={{ width: 240 }}
-                            cover={<img src={i.image} alt={i.name}/>}
-                        >
-                            <Meta className='characters-card-meta' title={i.name}/>
-                        </Card>
+                        <Character data={i}/>
                     </Col>
                 )}
             </Row>
