@@ -22,6 +22,7 @@ function Filter() {
         let select =
             <Col key={key}>
                 <Select
+                    className='filter-select'
                     defaultValue={'unknown'}
                     onChange={(value) => setFilter(value, key)}
                     name={key}
