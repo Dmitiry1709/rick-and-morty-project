@@ -1,34 +1,33 @@
 import React from "react"
-import {CHARACTERS_INPUTS, CHARACTERS_SELECT} from "../consts/CharactersFilter"
-import {useCharacters} from "../contexts/Characters"
-import {SET_FILTER} from "../consts/CharactersReducerTypes"
+import {useBaseContext} from "../../contexts/BaseContext"
+import {SET_FILTER} from "../../consts/reducerTypes"
 import {Row, Col, Input, Select} from 'antd'
+import {FILTER_SELECT_DEFAULT} from "../../consts/messages"
 
-const { Option } = Select
+const {Option} = Select
 
 function Filter() {
-    const selects = []
-    const charactersR = useCharacters().charactersR
-
+    const {state, dispatch} = useBaseContext()
     const setFilter = (value, name) => {
-        charactersR({
+        dispatch({
             type: SET_FILTER,
             filterName: name,
             filterValue: value
         })
     }
 
-    for (let key in CHARACTERS_SELECT) {
+    const selects = []
+    for (let key in state.filterFields.selects) {
         let select =
             <Col key={key}>
                 <Select
                     className='filter-select'
-                    defaultValue={'unknown'}
+                    defaultValue={''}
                     onChange={(value) => setFilter(value, key)}
                     name={key}
                 >
-                    <Option value="unknown">Не выбрано</Option>
-                    {CHARACTERS_SELECT[key].map((i, index) =>
+                    <Option value="">{FILTER_SELECT_DEFAULT}</Option>
+                    {state.filterFields.selects[key].map((i, index) =>
                         <Option key={index} value={i}>{i}</Option>
                     )}
                 </Select>
@@ -39,7 +38,7 @@ function Filter() {
 
     return (
         <Row className='filter' justify={'center'} gutter={[16, 16]}>
-            {CHARACTERS_INPUTS.map((i, index) =>
+            {state.filterFields.inputs.map((i, index) =>
                 <Col key={index}>
                     <Input
                         onBlur={(event) => setFilter(event.target.value, i)}

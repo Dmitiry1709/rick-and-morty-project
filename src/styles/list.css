@@ -1,17 +1,17 @@
-.characters{
+.container{
     max-width: 1300px;
     margin: 0 auto !important;
     min-height: calc(100vh - 64px);
 }
-.characters-card{
+.card{
     width: 240px;
 }
-.characters-card-meta{
+.card-meta{
     text-align: center;
 }
-.characters-null-title{
+.null-text{
     text-align: center;
 }
-.characters-card-modal{
+.card-modal{
     width: 140px;
 }

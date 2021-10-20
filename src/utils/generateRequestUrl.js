@@ -1,7 +1,4 @@
-import {CHARACTER_URL} from "../consts/Api";
-
-export const generateQueryCharacters = (page, filter) => {
-    const url = CHARACTER_URL
+export const generateRequestUrl = (url, page, filter) => {
     const pageQuery = `?page=${page}`
     const filterQuery = []
 
