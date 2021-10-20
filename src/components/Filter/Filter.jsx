@@ -35,7 +35,7 @@ function Filter(props) {
                         onBlur={(event) => setFilter(event.target.value, i)}
                         onKeyPress={(event) => {
                             if (event.key === 'Enter') {
-                                setFilter(event, i)
+                                setFilter(event.target.value, i)
                                 event.target.blur()
                             }
                         }}

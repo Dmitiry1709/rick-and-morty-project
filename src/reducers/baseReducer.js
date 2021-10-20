@@ -1,5 +1,14 @@
-import {CLOSE_MODAL, LOADER, OPEN_MODAL, SET_FILTER, UPDATE_DATA} from "../consts/reducerTypes"
+import {
+    CLOSE_MODAL,
+    LOADER,
+    OBSERVER,
+    OBSERVER_START,
+    OPEN_MODAL,
+    SET_FILTER,
+    UPDATE_DATA
+} from "../consts/reducerTypes"
 import {afterSetFilter} from "../utils/afterSetFilter"
+import {afterObserver} from "../utils/afterObserver"
 
 export const baseReducer = (state, action) => {
     switch (action.type) {
@@ -12,8 +21,13 @@ export const baseReducer = (state, action) => {
                 ...state,
                 info: action.data.info,
                 items: action.data.results,
-                loader: false
+                loader: false,
+                observerStart: true
             }
+        case OBSERVER:
+            return afterObserver(state, action)
+        case OBSERVER_START:
+            return {...state, observerStart: !state.observerStart}
         case OPEN_MODAL:
             return {...state, modal: action.item}
         case CLOSE_MODAL:

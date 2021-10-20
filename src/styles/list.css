@@ -15,3 +15,12 @@
 .card-modal{
     width: 140px;
 }
+.divider{
+    width: 100%;
+    display: flex;
+    min-width: 100%;
+    margin: 24px 0;
+    clear: both;
+    color: rgba(0, 0, 0, 0.85);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}

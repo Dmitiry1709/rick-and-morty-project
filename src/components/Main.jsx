@@ -1,18 +1,22 @@
-import React from "react"
+import React, {useRef} from "react"
 import {useBaseContext} from "../contexts/BaseContext"
 import List from "./List/List"
 import Filter from "./Filter/Filter"
 import {Layout, Typography, Spin} from "antd"
 import {TITLE} from "../consts/messages"
 import {CLOSE_MODAL, OPEN_MODAL, SET_FILTER} from "../consts/reducerTypes";
+import {useObserver} from "../hooks/useObserver";
 
 const {Content, Header} = Layout
 const {Title} = Typography
 
 function Main() {
     const {state, dispatch} = useBaseContext()
+    const divider = useRef()
 
-    const setFilter = (name, value) => {
+    useObserver(divider, state, dispatch)
+
+    const setFilter = (value, name) => {
         dispatch({
             type: SET_FILTER,
             filterName: name,
@@ -49,6 +53,11 @@ function Main() {
                         openModal={openModal}
                         closeModal={closeModal}
                     />
+                    <div
+                        className='divider'
+                        ref={divider}
+                    >
+                    </div>
                 </Content>
             </Layout>
         </Spin>
