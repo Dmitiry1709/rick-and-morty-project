@@ -10,16 +10,18 @@ export const useObserver = (ref, state, dispatch) => {
         const callback = function(entries, observer) {
             if(entries[0].isIntersecting ){
                 dispatch({type: OBSERVER_START})
-                if(!state.info.next) return null
-                fetch(state.info.next)
-                    .then(response => response.json())
-                    .then(response => {
-                        dispatch({type: OBSERVER_START})
-                        dispatch({
-                            type: OBSERVER,
-                            data: response
+                if(state.info) {
+                    if(!state.info.next) return null
+                    fetch(state.info.next)
+                        .then(response => response.json())
+                        .then(response => {
+                            dispatch({type: OBSERVER_START})
+                            dispatch({
+                                type: OBSERVER,
+                                data: response
+                            })
                         })
-                    })
+                }
             }
         }
 
