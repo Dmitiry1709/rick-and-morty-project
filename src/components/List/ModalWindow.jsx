@@ -2,7 +2,9 @@ import React from "react"
 import {Row, Col, Modal} from "antd"
 
 
-function ModalWindow({modal, modalProps, closeModal}) {
+function ModalWindow(props) {
+    const {modal, modalProps, closeModal} = props
+
     if (modal) {
         const properties = []
 

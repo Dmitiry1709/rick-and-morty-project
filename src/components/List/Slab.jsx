@@ -3,7 +3,9 @@ import {Card} from "antd"
 
 const {Meta} = Card
 
-function Slab({item, openModal}) {
+function Slab(props) {
+    const {item, openModal} = props
+
     return (
         <Card
             onClick={openModal}

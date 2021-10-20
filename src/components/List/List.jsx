@@ -1,16 +1,13 @@
 import React from "react"
-import {useBaseContext} from "../../contexts/BaseContext"
 import {Col, Row, Typography} from "antd"
 import {NO_ITEMS} from "../../consts/messages"
 import Slab from "./Slab"
 import ModalWindow from "./ModalWindow"
-import {CLOSE_MODAL, OPEN_MODAL} from "../../consts/reducerTypes"
 
 const {Title} = Typography
 
-function List() {
-    const {state, dispatch} = useBaseContext()
-    const {items, modal, modalProps} = state
+function List(props) {
+    const {items, modal, modalProps, openModal, closeModal} = props
 
     if (items) {
         return (
@@ -20,7 +17,7 @@ function List() {
                         <Col key={i.id}>
                             <Slab
                                 item={i}
-                                openModal={() => dispatch({type: OPEN_MODAL, item: i})}
+                                openModal={() => openModal(i)}
                             />
                         </Col>
                     )}
@@ -28,7 +25,7 @@ function List() {
                 <ModalWindow
                     modal={modal}
                     modalProps={modalProps}
-                    closeModal={() => dispatch({type: CLOSE_MODAL})}
+                    closeModal={closeModal}
                 />
             </>
         )
