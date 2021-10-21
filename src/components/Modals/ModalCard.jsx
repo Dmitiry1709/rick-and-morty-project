@@ -2,7 +2,7 @@ import React from "react"
 import {Row, Col, Modal} from "antd"
 
 
-function ModalWindow(props) {
+function ModalCard(props) {
     const {modal, modalProps, closeModal} = props
 
     if (modal) {
@@ -11,10 +11,10 @@ function ModalWindow(props) {
         for (let key in modalProps) {
             if (modal[key] && modal[key] !== '') {
                 if (key === 'created') {
-                    let prop = <li>{modalProps[key] + new Date(modal[key]).toLocaleDateString()}</li>
+                    let prop = <li key={key}>{modalProps[key] + new Date(modal[key]).toLocaleDateString()}</li>
                     properties.push(prop)
                 } else {
-                    let prop = <li>{modalProps[key] + modal[key]}</li>
+                    let prop = <li key={key}>{modalProps[key] + modal[key]}</li>
                     properties.push(prop)
                 }
 
@@ -51,4 +51,4 @@ function ModalWindow(props) {
     return null
 }
 
-export default ModalWindow
+export default ModalCard
