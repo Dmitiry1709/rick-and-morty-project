@@ -5,6 +5,7 @@
 }
 .card{
     width: 240px;
+    min-height: 306px;
 }
 .card-meta{
     text-align: center;
