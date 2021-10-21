@@ -1,6 +1,6 @@
 import React, {useContext, useReducer} from "react"
 import {baseReducer} from "../reducers/baseReducer"
-import {useApi} from "../hooks/useApi"
+import {useFilter} from "../hooks/useFilter"
 
 const BaseContext = React.createContext()
 
@@ -11,7 +11,7 @@ export const useBaseContext = () => {
 export const BaseProvider = ({ children, init }) => {
     const [state, dispatch] = useReducer(baseReducer, init)
 
-    useApi(state, dispatch)
+    useFilter(state, dispatch)
 
     return (
         <BaseContext.Provider value={{ state, dispatch }}>
