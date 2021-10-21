@@ -2,7 +2,7 @@ import React from "react"
 import {Col, Row, Typography} from "antd"
 import {NO_ITEMS} from "../../consts/messages"
 import Slab from "./Slab"
-import ModalWindow from "./ModalWindow"
+import ModalCard from "../Modals/ModalCard"
 
 const {Title} = Typography
 
@@ -22,7 +22,7 @@ function List(props) {
                         </Col>
                     )}
                 </Row>
-                <ModalWindow
+                <ModalCard
                     modal={modal}
                     modalProps={modalProps}
                     closeModal={closeModal}
