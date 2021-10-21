@@ -1,31 +1,18 @@
-import {useEffect, useRef} from "react";
-import {OBSERVER, OBSERVER_START} from "../consts/reducerTypes"
+import {useEffect, useRef} from "react"
 
-export const useObserver = (ref, state, dispatch) => {
+export const useObserver = (ref, callback, deps = [], isStart = true) => {
     const observer = useRef()
     useEffect(() => {
-        if(!state.observerStart) return null
-        if(observer.current) observer.current.disconnect();
+        if (!isStart) return null
+        if (observer.current) observer.current.disconnect()
 
-        const callback = function(entries, observer) {
-            if(entries[0].isIntersecting ){
-                dispatch({type: OBSERVER_START})
-                if(state.info) {
-                    if(!state.info.next) return null
-                    fetch(state.info.next)
-                        .then(response => response.json())
-                        .then(response => {
-                            dispatch({type: OBSERVER_START})
-                            dispatch({
-                                type: OBSERVER,
-                                data: response
-                            })
-                        })
-                }
+        const observerFunc = function (entries, observer) {
+            if (entries[0].isIntersecting) {
+                callback()
             }
         }
 
-        observer.current = new IntersectionObserver(callback);
+        observer.current = new IntersectionObserver(observerFunc)
         observer.current.observe(ref.current)
-    },[state.info])
+    }, deps)
 }

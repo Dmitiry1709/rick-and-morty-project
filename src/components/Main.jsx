@@ -4,8 +4,9 @@ import List from "./List/List"
 import Filter from "./Filter/Filter"
 import {Layout, Typography, Spin} from "antd"
 import {TITLE} from "../consts/messages"
-import {CLOSE_MODAL, OPEN_MODAL, SET_FILTER} from "../consts/reducerTypes";
-import {useObserver} from "../hooks/useObserver";
+import {CLOSE_MODAL, OPEN_MODAL, SET_FILTER} from "../consts/reducerTypes"
+import {useObserver} from "../hooks/useObserver"
+import {callbackObserver} from "../utils/callbackObserver"
 
 const {Content, Header} = Layout
 const {Title} = Typography
@@ -14,7 +15,12 @@ function Main() {
     const {state, dispatch} = useBaseContext()
     const divider = useRef()
 
-    useObserver(divider, state, dispatch)
+    useObserver(
+        divider,
+        callbackObserver(dispatch, state.info),
+        [state.info],
+        state.observerStart
+    )
 
     const setFilter = (value, name) => {
         dispatch({
