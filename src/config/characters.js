@@ -4,7 +4,7 @@ import {CHARACTER_PROPS} from "../consts/modalProps"
 
 export const CHARACTERS_INIT = {
     ...BASE_INIT,
-    requestUrl: 'https://rickandmortyapi.com/api/character/',
+    requestUrl: 'https://rickandmortyapi.com/api/character',
     filterFields: {
         inputs: CHARACTERS_INPUTS,
         selects: CHARACTERS_SELECT
