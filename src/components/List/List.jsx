@@ -2,7 +2,8 @@ import React from "react"
 import {Col, Row, Typography} from "antd"
 import {NO_ITEMS} from "../../consts/messages"
 import Slab from "./Slab"
-import ModalCard from "../Modals/ModalCard"
+import ModalCard from "../Utils/ModalCard"
+import DynamicPagination from "../Utils/DynamicPagination";
 
 const {Title} = Typography
 
@@ -22,6 +23,7 @@ function List(props) {
                         </Col>
                     )}
                 </Row>
+                <DynamicPagination />
                 <ModalCard
                     modal={modal}
                     modalProps={modalProps}

@@ -5,22 +5,12 @@ import Filter from "./Filter/Filter"
 import {Layout, Typography, Spin} from "antd"
 import {TITLE} from "../consts/messages"
 import {CLOSE_MODAL, OPEN_MODAL, SET_FILTER} from "../consts/reducerTypes"
-import {useObserver} from "../hooks/useObserver"
-import {callbackObserver} from "../utils/callbackObserver"
 
 const {Content, Header} = Layout
 const {Title} = Typography
 
 function Main() {
     const {state, dispatch} = useBaseContext()
-    const divider = useRef()
-
-    useObserver(
-        divider,
-        callbackObserver(dispatch, state.info),
-        [state.info],
-        state.info
-    )
 
     const setFilter = (value, name) => {
         dispatch({
@@ -59,11 +49,6 @@ function Main() {
                         openModal={openModal}
                         closeModal={closeModal}
                     />
-                    <div
-                        className='divider'
-                        ref={divider}
-                    >
-                    </div>
                 </Content>
             </Layout>
         </Spin>
