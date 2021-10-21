@@ -1,8 +1,6 @@
 import {
-    CLOSE_MODAL,
+    CLOSE_MODAL, DYNAMIC_PAGINATION,
     LOADER,
-    OBSERVER,
-    OBSERVER_START,
     OPEN_MODAL,
     SET_FILTER,
     UPDATE_DATA
@@ -21,13 +19,10 @@ export const baseReducer = (state, action) => {
                 ...state,
                 info: action.data.info,
                 items: action.data.results,
-                loader: false,
-                observerStart: true
+                loader: false
             }
-        case OBSERVER:
+        case DYNAMIC_PAGINATION:
             return afterObserver(state, action)
-        case OBSERVER_START:
-            return {...state, observerStart: !state.observerStart}
         case OPEN_MODAL:
             return {...state, modal: action.item}
         case CLOSE_MODAL:

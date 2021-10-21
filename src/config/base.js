@@ -4,6 +4,5 @@ export const BASE_INIT = {
     items: [],
     loader: false,
     modal: false,
-    page: 1,
-    observerStart: false,
+    page: 1
 }

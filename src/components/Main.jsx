@@ -19,7 +19,7 @@ function Main() {
         divider,
         callbackObserver(dispatch, state.info),
         [state.info],
-        state.observerStart
+        state.info
     )
 
     const setFilter = (value, name) => {
